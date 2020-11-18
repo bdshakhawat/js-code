@@ -29,12 +29,12 @@
 // console.log(x);
 
 // But if i write "use strict " then local variable x=10 can't be use as global variable thus give error
-"use strict";
+// "use strict";
 
-function myFunc() {
-    // local scope
-     x=10;
-    console.log(`${x} from myFunc ()`);
-}
-myFunc();
-console.log(x);
+// function myFunc() {
+//     // local scope
+//      x=10;
+//     console.log(`${x} from myFunc ()`);
+// }
+// myFunc();
+// console.log(x);
