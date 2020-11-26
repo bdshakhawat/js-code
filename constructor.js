@@ -25,10 +25,6 @@ function cricketer(name, age, type, country){
 person.prototype = {
     eat : function(){
         console.log(`${this.name} is eating`);
-    },
-};
-let sakib = new cricketer("sakib",36,"All Rounder", "Bangladesh");
-cricketer.prototype.constructor = cricketer;
-
-
+    }
+}
 
