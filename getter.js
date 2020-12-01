@@ -10,6 +10,9 @@ class person{
         // return this.name;
         return "sumon";
     }
+    set setName(){
+        
+    }
 }
 let sakib = new person ("sakib", 40);
 console.log(sakib.setName);
