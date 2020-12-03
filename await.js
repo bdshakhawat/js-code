@@ -75,4 +75,5 @@ const addToCalander = (metingDetails)=>{
         
     }
     myMeeting();
+    // output: Technical meting has been sceduled on google meet at 10:00 pm
     
