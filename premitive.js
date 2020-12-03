@@ -84,10 +84,37 @@ var a = "sakib";
 a.test = "Tamim";
 console.log(a);
 // here it skips the a.test but don't give any error.Just ignore this.Because it knows that he is premitive type
-// so he will ignore it.So,reference type can be mutate but premitive type can't be mutate but it can reassign*/
+// so he will ignore it.So,reference type can be mutate but premitive type can't be mutate but it can reassign
+*/
 
+// *********pass by reference and pass by value************
+/*let a = 1;
+let change = (val)=>{
+    val =2;
 
+}
+change(a);
+// passed by reference.because when any types of value is passd as parameter inside a function whether it is primitive
+// or reference it will be pass by reference.
+console.log(a);*/
+/*let a = {
+    num : 1
+}
+let change = (val)=>{
+    val ={};
+    // this is assignment so creating a new scope so the value is not reflecting.as it is keeping it into a new scope.
 
+}
+change(a);*/
+
+let a = {
+    nm :1,
+}
+let change = (val)=>{
+    val.nm =2;
+
+}
+change(a);
 
 
 
