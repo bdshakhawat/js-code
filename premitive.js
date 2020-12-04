@@ -107,14 +107,15 @@ let change = (val)=>{
 }
 change(a);*/
 
-let a = {
-    nm :1,
-}
-let change = (val)=>{
-    val.nm =2;
+// let a = {
+//     nm :1,
+// }
+// let change = (val)=>{
+//     val = val +1;
 
-}
-change(a);
+// }
+// change(a);
+// console.log(a);
 
 
 
