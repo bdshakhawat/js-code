@@ -124,6 +124,201 @@ function isUserVerified(user){
     return userRecord.isVerified()
 }
 ****Refactiring function is one of the best practice in 
-any functional programming***********
+any functional programming. ***********
 
+****Always do strong type check****
+// 1== "1"; output:true
+but 1 === "1" false
+0== false; output:true
+but 0===false; output:false
+// try to use ===
+Full example
+const val = "123";
+if (val=="123"){
+    reachable. val will enter into the block.
+    console.log(`1.${val}`);
+}
+if (val==123){
+    reachable. val can  enter into the block.
+    console.log(`2.${val})
+}
+if (val=== 123){
+    unreachable. val can not enter into the block.because one is string and another is number.
+    console.log(3.${val})
+}
+if (val==="123"){
+    reachable because both are string.
+    console.log(4.${val})
+}
+***sometimes we need to create any configuration type object and we consider this object as default object other than
+this if we pass any thing from outside then this default's are replaced by the pssing object of outside and set there.
+Bad practice:
+const shapeConfig = {
+    type: "circle",
+    width: 150;
+    height: null,
+};
+function createShape{config}{
+    config.type = config.type || "circle";
+    config.width = config.width ||300;
+    config.height = config.height || 300;
+}
+createShape(shapeConfig);
+***Good practice
+onst shapeConfig = {
+    type: "circle",
+    width: 150;
+    excluded the height as it can be null
+};
+function createShape{config}{
+    // object.assign a beautiful feature of ES6.It receives two parameters one is target another is source.
+    her it takes everything from the source object and paste it in the target object config.This merge this two object
+    config--the source object's everything and the target object's everything together.
+    config = object.assign(
+        {
+            type:"circle",
+            width: 300;
+            height: 300     ***target object
+
+    },
+    config    ***source object
+    ) ;
+    
+}
+createShape(shapeConfig);
+***prototype pollution****
+**Bad
+Array.prototype.myFunction = function myFunction(){
+    implementation
+};
+***Good
+class MyArray extends Array {
+    myFunc(){
+        implementation
+    }
+}
+[when we write Array with capital letter then it denotes the main array. If we can enter any function into the prototype
+of an Array then we can use this function into any array from this prototype of main Array]
+so it is a very bad practice to enter anyone's personal function inside the main Array.prototype rather you can 
+create a class and extends it with the prototype which will be the best practice like the sceond case in this example.
+******use conditionals shorthand******
+Bad:
+if(isValid===true){
+    do something
+}
+if (isValid===false){
+    do something
+}
+
+***Good
+if(isValid){
+    do something
+}
+if (isValid){
+    do something
+}
+********use Method chaining******
+Here is one simple class and inside the class there are three methods named setUnit, setPrice and save.Now by using 
+this class we will create a new product bag and set its price,units and finally save this.
+Bad:
+class Product {
+    constructor(name){
+        this.name = name;
+    }
+
+
+setUnits(units){
+    this.units= units;
+}
+setPrice(price){
+    this.price = price;
+}
+save(){
+    console.log(this.name,this.units,this.price);
+ }
+}
+const product = new Product("Bag");
+
+product.setPrice(23,99);
+product.setUnits(12);
+product.save();
+
+***Good****
+Now in earlier code i have used 
+roduct.setPrice(23,99);
+product.setUnits(12);
+product.save(); but if i can return this product from every method then i can write this code in a easy to read way.
+Here,all three methods are chained together.
+
+class Product{
+    constructor(name){
+        this.name=name;
+    }
+    setUnits(units){
+        this.units = units;
+        return this;
+    }
+    setPrice(price){
+        this.price = price;
+        return this;
+    }
+    save(){
+        console.log(this.name,this.price,this.units);
+    }
+}
+// now using the method chaining we can write like this.
+const product = new Product("T-shirt").setUnits(12).setPrice(500).save();
+This is one of the best practice in class based code writing in javascript
+********Avoid Eval**************this function creates a security vulnarability.the function of eval function is 
+if i pass a string in it then this string execute as javascript code.
+eval("alert("Hi")"; if i run this code in browser then i will get alert.
+so, its a risky things.
+****Always use curly braces snd use shortnands***
+// case 1
+if(someVariableExists)
+x=false;
+// case 2
+if(someVariableExists)
+x=false;
+anotherFunctionCall();
+// one might think that the code above would be equivalent to
+if (someVariableExists){
+    x=false;
+    anotherFunctionCall();
+}
+// unfonunately he would be wrong. In reality it would be equal to---
+if(someVariableExists){
+    x=false;
+}
+anotherFunctionCall()
+****add porototype methods on  the .prototype when writing constructor****
+Bad practice:
+function player(name,age){
+    this.name = name;
+    this.age = age;
+
+    this.play = function (){
+        console.log(`${this.name} is playing);
+    };
+}
+let sakib = new player ("sakib", 38);
+sakib.play();
+***Good practice
+function player(name,age){
+    this.name = name;
+    this.age = age;
+}
+player.prototype.play= function(){
+    console.log(`${this.name} is playing);
+}
+let sakib = new player("sakib", 35);
+let sakib = new player("Tamim", 36);
+console.log(sakib);
+console.log(tamim);
+****In first case the .play method will be common in every new object i create so if there are more objects other than 
+sakib and tamim then the object size will be huge and affect the performance.But in second case when we keep the play 
+method in the prototype then the new objects can take this method accoeding to their reqirement. They will not get it 
+by default.Always in constructor function the common cethods should be inserted into the prototype for better 
+performance of javascript**********
+******in case of For loop declaring variable outside the for statement
 
