@@ -321,4 +321,78 @@ method in the prototype then the new objects can take this method accoeding to t
 by default.Always in constructor function the common cethods should be inserted into the prototype for better 
 performance of javascript**********
 ******in case of For loop declaring variable outside the for statement
+Bad practice
+for (var i=0; i<someArray.length;i++){
+  var  container = document.getElementById("container");
+  container.innerHtml +="my number:" + i;
+  console.log(i);
+}
+ ******Good practice****
+ var container = document.getElementById("container");
+ var len = someArray.length;
+ for(var i=0; i<len;i++){
+     container.innerHtml +="my number: " + 1;
+     console.log(i);
+ }
+ now if there are 500 items then in first case we need to calculate the length 500 times and container by document.get 
+ element by id 500time but if we write the code like second case then we need to calculate only one time instead of 
+ 500times both the length and container. so this code will be more efficient and performence optimized.Because DOM
+ accessing is really off perfonmence job.So, allways try to lessen DOM access codes.
+ ******Use Let and Const instead of var*********
+if we think that the value can be change then use let but if we think that the may not change then use const.
+****omit the use of frequent using of var keyword and instead of this use commas****
+Bad practice:
+var someItems = "some string";
+var anotherItems = "another string";
+var oneMoreItem = "one more string";
+// Good practice
+var someItems = "some string",
+ anotherItems = "another string",
+ oneMoreItem = "one more string";
+ ***Always use semicolon. Highly recomented*******
+****use IIFE as much as possible*****
+when a function called by himself then it is called IIFE.
+(function doSomething(){
+    return {
+        name:"sakib",
+        lastName: "hasan"
+    };
+})();
+***Modular pattern. Avoid using global
+Bad:
+var current = null;
+function init(){
+    do something
+}
+function change(){
+    do something
+}
+function verify(){
+    do something
+}
+***Good practice*****
+// use of modular pattern
+const myModule = (function(){
+    var current =null;
+    function init(){
+        do something
+        console.log("init");
+    }
+    function change(){
+    do something
+    }
+    function verify(){
+        do something
+    }
+    return {
+        init
+        change
+        bortoman : current,
+    }
+})();
+myModule.init();
+****avoid language  attribute***
+<script type = "text/javascript"| language =
+
+
 
