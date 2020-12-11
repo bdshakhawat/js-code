@@ -91,15 +91,44 @@ for (let element of array) {
 // ***What is iterable protocol?****
 //  To become iterable which rules should be followed?Javascript set some rules to become an iterable.This is known as iterable
 //  protocol. 1.Must have a symbol.iterator function property. 
-// 2. The function must return an iterator. Now let's see what is return by this.
+// 2. The function must return an iterator when called. Now let's see what is return by this.
 
 // now if i want to access the property of this array then we can write array[symbol.iterator ].bcause we know we can access
-// any element of array like this and symbol.iterator is a property of array insid the proto.
+// any element of array like this and symbol.iterator is a property of array insid the proto.This array[symbol.iterator]()
+// return an  iterator after calling.
+// *****So, there is a function named symbol.iterator()  inside every iterable's (iterable means through which we can
+// travel and access its properties like array,string but non-iteravles does notpermit to access its and do looping its
+// vales like object,number etc) proto .When we call this symbol.iterator() then we will get an iterator.
+//  in this example arry=[1,2,3] is an iterable and inside it's proto there is a function named [symbol.iterator].now
+// i have called this function [symbol.iterator]() and it is giving an out ***Array iterator***.
 
-let array = [1,2,3];
-let iterator = array[Symbol.iterator]();
-console.dir(iterator);
+/* let array = [1,2,3];
+// let iterator = array[Symbol.iterator]();
+// console.dir(iterator);
 // Array iterator
+ Now if i open this "Array iterator" then i will get an "next" method----(from google chrome consol)
+Array Iterator
+__proto__: Array Iterator
+next: ƒ next()
+Symbol(Symbol.toStringTag): "Array Iterator"
+__proto__: Object.     */
+
+
+/*  Now if is call the function next() then is will get--
+ let array = [1,2,3];
+ let iterator = array[Symbol.iterator]();
+ console.log(iterator.next());
+ console.log(iterator.next());
+ console.log(iterator.next());
+//  output: {value: 1, done: false} this means it is giving an object whosw properties are value and done.It means it is 
+//  donating us the iterator as an object and we can use it as we like.When i was using for....of by default it is calling
+// this symbol.iterator function again and again but javascript is giving me this iterator saperately and if i want i can 
+// bring it out and can change the behaviour of the for...of by using this symbol.iterator function.
+// so, if i call the 'next()' function first time then i will get the first value of array = [1,2,3] as output like
+// {value: 1, done: false} if i call it second time and third time then i will get the second and third value of 
+array = [1,2,3] as output like// {value: 1, done: false}, {value: 2, done: false}, {value: 3, done: false     */
+
+
 
 
 
