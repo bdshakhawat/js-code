@@ -175,7 +175,7 @@ __proto__: Array(0)  spreaded all the letters from the string with their index n
 // behaviour of the 'spread operator' will be changed.
 // To do this write big string of prototype of symbol.iterator menans  String.prototype[symbol.iterator]. It is a function.
 // so write this function by my own.
-String.prototype[Symbol.iterator] = function() {
+/*String.prototype[Symbol.iterator] = function() {
 
     // have to follow the iterator protocol 1. retunr an object
     let count = this.length;
@@ -206,6 +206,87 @@ String.prototype[Symbol.iterator] = function() {
 
 console.log(..."Hello");
 // js js js js js
+// Example 2 our custom iterable and iterator.Now we will create a custom iterable like array,string etc. and for this iterable i will create an iterator also.
+// I want to use this range function in spread operator.We know spread operator works with any type of iterable.so, it will also work with 
+// our range() function.So, my moto is to call the range function like [...range]because range function return an iterable and spread function
+// will work on it.Now start will 1 and end will 30 and the difference 2 that means 1,3,5,7....like this.So, i have to pass three parameter like
+// start, end and step
+function range(start, end, step) {
+    let current = start;
+    // Firstly it should return an object. So, take a function which will return an object
+    return {
+        // Inside the object there will be a function named symbol.iterator 
+        [Symbol.iterator] : function() {
+        // Now it should return or implement a next()method
+        return {
+            next() {
+                let result;
+                // it will run until the value of current is less than end and plus 2 with the current value
+               if (current <= end) {
+                   result = {
+                       value : current,
+                       done :  false
+                   };
+                
+                //    now return done = false and value = current
+                // return{
+                //     done : false,
+                //     value : current
+                // };
+                // now add current with step. But i can not add step with current because i was returning first and will not get the value
+                // of current.So, we can keep the value of return into a variable and can use it to add with step.
+                current += current + step;
+                return result;
+
+                
+
+
+            }
+            return {
+                done : true,
+            }
+
+                // This next()method will have to retunn an object which will have two properties value and done.In case of iterator i have to think
+                // for each step.so, we will take 1 then plus 2 get the result 3 and plus 2 get the result 5 plus 2 and go on and on.To do this
+                // every time i have to work on a current value. now set a condition
+
+            }
+        }
+        }
+    }
+}
+console.log([...range(1,30,2)]);           */
+// output: [1,3,5,7,9,11,13,15,17,.....29]
+function range(start, end, step) {
+    let current = start;
+    return {
+         
+        [Symbol.iterator] : function() {
+            return {
+                next(){
+                    let result;
+                    if (current <= end) {
+                        result = {
+                            done : false,
+                            value : current,
+                        };
+                        current += step;
+                        return result
+
+
+                    }
+                  return {
+                      done : true,
+                  }
+                }
+            
+                }
+
+            }
+        }
+    }
+    console.log([...range(1,30,2)]);
+
 
 
 
