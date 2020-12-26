@@ -34,7 +34,8 @@
 
 
 
-// *******1. Implicit binding**************
+// *******1. Implicit binding************** In this case there will be a dot and after that this object will sit.
+// here in the example sakib.father.printName(); father is 'this' object. 
 // var person = function(name,age){
 //     return {
 //         name : name,
