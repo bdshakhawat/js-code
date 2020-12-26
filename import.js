@@ -21,12 +21,32 @@ console.log(test);
 
 // output: [Module] { a: 3.9, pi: 3.14 } like an object
 console.log(test.a);
-// output: 3.9 */
+// output: 3.9 
 
 // **I can write in alias way like***
 import {pi as varPi, a as varA} from './external.js';
 console.log(varPi,varA);
-// output: 3.14 3.9
+// output: 3.14 3.9 
+
+
+// ***Default import and export*******In this case i will not use the {} instead of this i will give a name here accorcing
+//  to my wish and will.This type of import and export is known as deafult import and export. In this case i have to 
+// write default name of the variable then i will get the value of default value inside my own name.
+// import { pi } from "./external";
+import outside, {pi} from './external.js';
+console.log(outside,pi);
+//output:  3.9 but if i want to get another export value then i have to call it by name {pi} output: 3.9 3.14 */
+
+
+// ******Importing function*********
+import outside from './external.js';
+
+// myFunc();
+// now if i want to get this function as default function then
+// import outside from './external';
+outside();
+// output: I am myFunc()
+
 
 
 

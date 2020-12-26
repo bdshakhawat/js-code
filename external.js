@@ -1,2 +1,7 @@
  export var pi = 3.14;
- export var a = 3.9;
+  var a = 3.9;
+ 
+//  function export
+ export default function myFunc() {
+    console.log("I am myFunc()");
+}
