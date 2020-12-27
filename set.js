@@ -62,13 +62,13 @@ __proto__: Object
 
 
 // ***set from array  or converting array into set*****
-let myArray = [1,2,3,4];
-let mySet = new Set(myArray)
-log(mySet);
+// let myArray = [1,2,3,4];
+// let mySet = new Set(myArray)
+// log(mySet);
 // output: { 1, 2, 3, 4 } ***we can pass any iterable inside a set***So, sets are iterable.
-for (let value of mySet) {
-    log(value);
-}
+// for (let value of mySet) {
+//     log(value);
+// }
 /* output: { 1, 2, 3, 4 }
 1
 2
@@ -77,22 +77,40 @@ for (let value of mySet) {
 // ***Converting set into array by using spread operator  and from method  Array.from(mySet)****
 // log([...mySet]);
 // output: [ 1, 2, 3, 4 ]
-log(Array.from(mySet));
+// log(Array.from(mySet));
 // output: [ 1, 2, 3, 4 ]
 
 
 // ***some uses of set*****1. to bring unique element.No duplicate element will be added.
-let a = new Set([1,2,3]);
-let b = new Set([4,3,2]);
+// let a = new Set([1,2,3]);
+// let b = new Set([4,3,2]);
 
-let union = new Set([...a,...b]);
-log(union);
+// let union = new Set([...a,...b]);
+// log(union);
 // output: { 1, 2, 3, 4 }. now intersection
-let intersection = new Set([...a].filter(x=> b.has(x)));
-log(intersection);
+// let intersection = new Set([...a].filter(x=> b.has(x)));
+// log(intersection);
 // output: { 2, 3 }  common items
-let difference = new Set([...a].filter(x=> !b.has(x)));
-log(difference);
+// let difference = new Set([...a].filter(x=> !b.has(x)));
+// log(difference);
+// { 1 } this item is not common in two array
+
+// ****weak set*****
+const ws = new WeakSet();
+log(ws);
+/* output: [[Entries]]
+No properties
+__proto__: WeakSet
+add: ƒ add()
+constructor: ƒ WeakSet()
+delete: ƒ delete()
+has: ƒ has()
+Symbol(Symbol.toStringTag): "WeakSet"
+__proto__: Object . we see here there are only three methods add(),  delete() and has()  In set we can add any iterable things. But in 
+weakset we can only add an object{}*/
+ws.add({a:1});
+
+
 
 
 
