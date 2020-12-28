@@ -107,7 +107,7 @@ delete: ƒ delete()
 has: ƒ has()
 Symbol(Symbol.toStringTag): "WeakSet"
 __proto__: Object . we see here there are only three methods add(),  delete() and has()  In set we can add any iterable things. But in 
-weakset we can only add an object{}*/
+weakset we can only add an object{}. weakset is not an iterable object . It will take iterable but he himself is not iterable*/
 ws.add({a:1});
 
 

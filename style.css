@@ -1,0 +1,10 @@
+#header {
+    text-align: center;
+    color: red;
+    font-size: 80px;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+  span {
+      display: none;
+  }
