@@ -1,25 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1 id ="header"> To-do <span>app</span>  </h1>
-    <p1 class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, possimus?</p1>
-    <h2 id=  "second">Daily activities</h2>
-    <p2 class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, minima numquam.</p2>
-    <!-- ul>li*5 -->
-    <ul id="items">
-        <li class="item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, quasi.</li>
-        <li class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsum harum facilis.</li>
-        <li class="item">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos, temporibus accusantium!</li>
-        <li class="item">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta.</li>
-        <li class="item">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident, neque laboriosam accusantium vero sed quod.</li>
-    </ul>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Sumit Saha, Learn with Sumit" />
+    <meta name="description" content="We love JavaScript" />
+    <title>DOM - Document Object Model</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Daily Task List" />
+      </div>
+      <h1 id="header" class="header">To-Do App</h1>
+
+      <form class="new-task-container box">
+        <label for="new-task">Add New Task</label>
+        <input type="text" id="new-task" />
+        <input type="submit" id="addTask" value="Add Task" />
+      </form>
+
+      <div class="todo-list box">
+        <h2>Incomplete Tasks</h2>
+        <ul id="items">
+          <li class="item">
+            <input type="checkbox" /><label>Task Name</label>
+          </li>
+          <li class="item">
+            <input type="checkbox" /><label>Task Name</label>
+          </li>
+          <li class="item">
+            <input type="checkbox" /><label>Task Name</label>
+          </li>
+        </ul>
+      </div>
+      <!--/todo-list-->
+
+      <div class="complete-list box">
+        <h2>Completed Tasks</h2>
+        <ul>
+          <li class="item">Task Name <button class="delete">Delete</button></li>
+        </ul>
+      </div>
+      <!--/complete-list-->
+    </section>
+    <!--/container-->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

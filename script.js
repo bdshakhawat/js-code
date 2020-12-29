@@ -89,12 +89,12 @@ length: 5
 __proto__: HTMLCollection  it is also an iterable element*/
 
 // ****************query selector**********Alternative of jquery.This query selector do the same thing done by the jquery.
-let header = document.querySelector('#header');
-console.log(header);
+// let header = document.querySelector('#header');
+// console.log(header);
 // output:  <h1 id ="header"> To-do <span>app</span>  </h1> so we can find elements by passing "CSS" selector in it.Like this
 //  we can hold any element by query selector.Now i want to hold the last li then---
-let lastitem = document.querySelector('.item:last-child');
-lastitem.style.color = "red";
+// let lastitem = document.querySelector('.item:last-child');
+// lastitem.style.color = "red";
 // query selector fall from up to down.QuerySelector return only one element
 //  of first matched item.If we use id . as selector then no problem
 // but if we use class and there are multiple same classes then it will return only the first matched class item.
@@ -113,6 +113,164 @@ let lastitem = document.querySelector('#items');
 querySelector('.item:nth-child(3));
 lastitem.style.color = "red"
 output: third li will be red.
+
+
+
+
+
+
+
+/*       ******DOM Hierarchy**********************
+while working with DOM we always have to face parent-child relationship.We know DOM is a tree structure.So, here must 
+have hierarchy. Now to handle this problem of hierarchy javascript has given us some useful properties and methods.
+ HTML example <div class="todo-list box">.In this div h1 and ul tag is child of div again all li are the child of ul
+now to hold the li i have to hold ul first then i will hold the li.Here div is grandparent he has two child 'h1' and ul and 'ul' has 3 child 'li'.
+*/
+// const parent = document.querySelector('#items');
+// const children  = parent.children;
+// console.log(children);
+/* output: HTMLCollection(5)
+// 0: li.item
+// 1: li.item
+// 2: li.item
+// 3: li.item
+// 4: li.item
+// length: 5
+// __proto__: HTMLCollection */
+
+/*const grandparent = document.querySelector('.todo-list');
+const parent = grandparent.children;
+const children = parent[1].children;
+console.log(children);
+output: same */
+
+
+
+// ******Now if i want i can directly go to grandparent to children by decendant order******
+/*const grandparent = document.querySelector('.items');
+const children = grandparent.querySelectorAll('.item');
+console.log(children);
+// output: same.*/
+
+
+
+// ******children to parent****Ascending order*****
+const children = document.querySelectorAll('.item');
+const parent = children.parentElement;
+console.log(parent);
+// output: ul element
+
+
+
+// ******children to grandparent****Ascending order*****
+const children = document.querySelector('.item');
+const grandparent = children.closest('.todo-list');
+// closest  method go down to up. Firstly it search todo-list class in parent
+// if not found then go to upper in grandparent and after finding return this.
+// output: div
+
+
+
+
+// ******Holding siblings(brother and sister)****descending order*****
+
+const childrenOne = document.querySelector('.item');
+const childrenTwo = childrenOne.nextElementSibling;
+childrenTwo.style.color = "red";
+
+
+// ******Holding siblings(brother and sister)****Ascending order*****
+
+const childrenTwo = document.querySelector('.item');
+const childrenOne = childrenTwo.previousElementSibling;
+childrenOne.style.color = "red";
+
+
+
+
+
+
+
+
+/*
+ * Title: To Do Application using vanilla JS DOM
+ * Description: This JS file has all the JS functions necessary to control the to do application
+ * Author: Sumit Saha ( Learn with Sumit )
+ * Date: 12/17/2020
+ *
+ 
+
+ // select elements & assign them to variables
+ let newTask = document.querySelector('#new-task');
+ let form = document.querySelector('form');
+ let todoUl = document.querySelector('#items');
+ let completeUl = document.querySelector('.complete-list ul');
+
+
+// functions
+let createTask = function(task) {
+    let listItem = document.createElement('li');
+    let checkBox = document.createElement('input');
+    let label = document.createElement('label');
+
+    label.innerText = task;
+    checkBox.type = 'checkbox';
+
+    listItem.appendChild(checkBox);
+    listItem.appendChild(label);
+
+    return listItem;
+}
+
+let addTask = function(event) {
+    event.preventDefault();
+    let listItem = createTask(newTask.value);
+    todoUl.appendChild(listItem);
+    newTask.value = "";
+    // bind the new list item to the incomplete list
+    bindInCompleteItems(listItem, completeTask);
+}
+
+let completeTask = function() {
+    let listItem = this.parentNode;
+    let deleteBtn = document.createElement('button');
+    deleteBtn.innerText = 'Delete';
+    deleteBtn.className = 'delete';
+    listItem.appendChild(deleteBtn);
+
+    let checkBox = listItem.querySelector('input[type="checkbox"]');
+    checkBox.remove();
+    completeUl.appendChild(listItem);
+    bindCompleteItems(listItem, deleteTask);
+}
+
+let deleteTask = function() {
+    let listItem = this.parentNode;
+    let ul = listItem.parentNode;
+    ul.removeChild(listItem);
+}
+
+let bindInCompleteItems = function(taskItem, checkboxClick) {
+    let checkBox = taskItem.querySelector('input[type="checkbox"]');
+    checkBox.onchange = checkboxClick;
+}
+
+let bindCompleteItems = function(taskItem, deleteButtonClick) {
+    let deleteButton = taskItem.querySelector('.delete');
+    deleteButton.onclick = deleteButtonClick;
+}
+
+for(let i=0; i< todoUl.children.length; i++ ) {
+    bindInCompleteItems(todoUl.children[i], completeTask);
+}
+
+for(let i=0; i< completeUl.children.length; i++ ) {
+    bindCompleteItems(completeUl.children[i], deleteTask);
+}
+
+form.addEventListener('submit', addTask);
+*/
+
 
 
 
