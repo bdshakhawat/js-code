@@ -442,8 +442,34 @@ MouseEvent {isTrusted: true, screenX: 658, screenY: 204, clientX: 658, clientY:
 /*  Difference between mouse over,leave and mouse enter,out.
 mouse over fire event on the parent element as well as its child element but mouse enter fire event only on parent element
 
-//  *****Some other important event***** Let's take the input area of todo  app*****
+//  *****Some other important event***** Let's take the input area of todo  app***** */
 
+
+
+/*    *******work with "input" element****
+const inputElement = document.querySelector('input [type="text"]');
+
+
+inputElement.addEventListener("keydown" , (event) => {
+    console.log(event);
+})
+
+// output: keyboard event  like this "keyup"--after pressing realease it. "keypress"---just press a key.
+// "focus"---just click. blur---after focusing click outside to blur.  "cut"---select and press. "paste"---click to paste anything. 
+// "input" any type of input can be given.*/ 
+
+
+
+
+
+//    *******work with "form" element****
+const formElement = document.querySelector('input [type="text"]');
+
+
+formElement.addEventListener("submit" , (event) => {
+    event.preventDefault();
+    console.log(event);
+})
 
 
 
