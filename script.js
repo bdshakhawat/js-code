@@ -155,16 +155,16 @@ console.log(children);
 
 
 // ******children to parent****Ascending order*****
-const children = document.querySelectorAll('.item');
-const parent = children.parentElement;
-console.log(parent);
+// const children = document.querySelectorAll('.item');
+// const parent = children.parentElement;
+// console.log(parent);
 // output: ul element
 
 
 
 // ******children to grandparent****Ascending order*****
-const children = document.querySelector('.item');
-const grandparent = children.closest('.todo-list');
+// const children = document.querySelector('.item');
+// const grandparent = children.closest('.todo-list');
 // closest  method go down to up. Firstly it search todo-list class in parent
 // if not found then go to upper in grandparent and after finding return this.
 // output: div
@@ -172,18 +172,307 @@ const grandparent = children.closest('.todo-list');
 
 
 
-// ******Holding siblings(brother and sister)****descending order*****
+/* ******Holding siblings(brother and sister)****descending order*****
 
 const childrenOne = document.querySelector('.item');
 const childrenTwo = childrenOne.nextElementSibling;
-childrenTwo.style.color = "red";
+childrenTwo.style.color = "red"; */
 
 
-// ******Holding siblings(brother and sister)****Ascending order*****
+
+/* ******Holding siblings(brother and sister)****Ascending order*****
 
 const childrenTwo = document.querySelector('.item');
 const childrenOne = childrenTwo.previousElementSibling;
-childrenOne.style.color = "red";
+childrenOne.style.color = "red"; */
+
+
+
+
+
+
+/* *****Manupulaing DOM*******creating, changing and deleting element********
+// ***How to create an DOM element dynamically*****
+const divElement = document.createElement("div");
+// console.log(divElement);
+// output: div    within this div all object properties and methods are present.
+// setting class and id for any html element
+divElement.className = "red";
+divElement.setAttribute("id", "red");
+divElement.setAttribute('title', 'Red Div');
+// Now class and id has been created dinamically but now i can set this class and id
+// at any place in the html file.To do this---say i have to set this class and id between
+// div "container" and h2. To do this first hold the "div" first then hold the h2 tag by querySelector. Now to insert this class and id 
+// use .insertBefore method which will take two parameter  1. the element i want to insert here class name and id 2.the name of the element 
+// before which i want to insert this element.
+// Now hold the "div" and h2 tag
+const container = document.querySelector('.todo-list');
+const h2Element = container.querySelector('h2');
+container.insertBefore(divElement, h2Element);
+// output: div class "red" and id "red" will be added  between div and h2.  */
+
+
+
+
+
+/* ***Adding class or id attribute at the end of a div element append child******Now i want to add class and id at the end of the container 
+
+const divElement = document.createElement("div");
+divElement.className = "red";
+divElement.setAttribute("id", "red");
+divElement.setAttribute('title', 'Red Div');
+
+const container = document.querySelector('.todo-list');
+container.appendChild(divElement);
+// output: div class will be added at the end of the container. we can also add this with container.append(divElement); but there is a 
+differece between append and appendchild. 1. Append  can add any text as well as class and id but appendChild can add only html element or node 
+class or id not any text 
+
+2. append child return the element but append does not return anything 
+// const a = container.append(divElement); console.log(a)  /return  undefined  
+   const b = container.appendChild(divElement); console.log(b) / return  div element.
+
+3. with append we can use multiple element, text 
+ container.append(divElement, document.createElement("p"), "Hello world"); / output: all three things added
+ container.appendChild(divElement, document.createElement("p"), "Hello world"); /output: only first element  div will be included 
+
+*/
+
+
+
+
+/*  ************Event Handler***********when we create any application then we need to handle different types of user activity for example
+user click on any button, or click on any item of the application or can do anything with mouse or can do any work with keyboard.So, the
+actions taken by the users on an application. This actions on the web page has some defined events and thus when any actions happen on  the 
+web page of any application then it gives an event and we can listen this event.This is called event listening.For example in ou application
+'Todo-app' when any user click on the "Add Task" button then javascript DOM by default fire an event named 'click' event then by listening 
+this event we can get different information.Now to work on a section of my "todo APP" givw an id and class named "header" . I want to listen
+event onclick on this section when any one click on the todo-app.so, firstly, i have to hold this section---*/
+
+
+/*  single click event        
+const headElement = document.querySelector("#header");
+// secondly, i have to add a function to lisetn event from headElement when it click by using an in built function of javascript named addEvent
+// listener.This function will take two parmeter.1.As first parmeter it will take "which event i want to hear like click" 2. After listening 
+// the event what i will do? it means js expect a function of doing something with the event.So, second parameter will be a function and this 
+// function get the event as his parameter.
+headElement.addEventListener('click', ()=> {
+    console.log(event);
+})
+/* output: MouseEvent {isTrusted: true, screenX: 660, screenY: 189, clientX: 660, clientY: 86, …}
+path: Array(6)
+0: h1#header.header
+1: section.container
+2: body
+3: html
+4: document
+5: Window  now inside this event we will get various properties and methods by which we can do many things.Now if we click on the button
+then we will get different event methods and properties. so, different unique item will give different event properties and methods*/
+
+
+
+/*            ***************Double click event*******************************
+const headElement = document.querySelector("#header");
+headElement.addEventListener('dblclick', ()=> {
+    console.log(event);
+})
+
+output:   MouseEvent {isTrusted: true, screenX: 668, screenY: 187, clientX: 668, clientY: 84, …}
+altKey: false
+bubbles: true
+button: 0
+buttons: 0
+cancelBubble: false
+cancelable: true
+clientX: 668
+clientY: 84
+composed: true
+ctrlKey: false
+currentTarget: null
+defaultPrevented: false
+detail: 2
+eventPhase: 0
+fromElement: null
+isTrusted: true
+layerX: 373
+layerY: 59
+metaKey: false
+movementX: 0
+movementY: 0
+offsetX: 345
+offsetY: 12
+pageX: 668
+pageY: 84
+path: (6) [h1#header.header, section.container, body, html, document, Window]
+relatedTarget: null
+returnValue: true
+screenX: 668
+screenY: 187
+shiftKey: false
+sourceCapabilities: InputDeviceCapabilities {firesTouchEvents: false}
+srcElement: h1#header.header
+target: h1#header.header
+timeStamp: 5751.004999969155
+toElement: h1#header.header
+type: "dblclick"
+view: Window {window: Window, self: Window, document: document, name: "", location: Location, …}
+which: 1
+x: 668
+y: 84
+__proto__: MouseEvent        */
+
+
+
+
+/*   ************Mouse down*************hold the mouse by clicking on "todo app" *********************
+const headElement = document.querySelector("#header");
+headElement.addEventListener('mousedown', ()=> {
+    console.log(event);
+})
+
+output: MouseEvent {isTrusted: true, screenX: 668, screenY: 184, clientX: 668, clientY: 81, …}
+altKey: false
+bubbles: true
+button: 0
+buttons: 1
+cancelBubble: false
+cancelable: true
+clientX: 668
+clientY: 81
+composed: true
+ctrlKey: false
+currentTarget: null
+defaultPrevented: false
+detail: 1
+eventPhase: 0
+fromElement: null
+isTrusted: true
+layerX: 373
+layerY: 56
+metaKey: false
+movementX: 0
+movementY: 0
+offsetX: 345
+offsetY: 9
+pageX: 668
+pageY: 81
+path: (6) [h1#header.header, section.container, body, html, document, Window]
+relatedTarget: null
+returnValue: true
+screenX: 668
+screenY: 184
+shiftKey: false
+sourceCapabilities: InputDeviceCapabilities {firesTouchEvents: false}
+srcElement: h1#header.header
+target: h1#header.header
+timeStamp: 12039.894999936223
+toElement: h1#header.header
+type: "mousedown"
+view: Window {window: Window, self: Window, document: document, name: "", location: Location, …}
+which: 1
+x: 668
+y: 81
+__proto__: MouseEvent   */
+
+
+
+/*      ******Mouse Up***hold the mouse by clicking on "todo app"  and realease it. At the time of realeasing event will happen***
+
+const headElement = document.querySelector("#header");
+headElement.addEventListener('mouseup', ()=> {
+    console.log(event);
+})
+
+output: 
+MouseEvent {isTrusted: true, screenX: 669, screenY: 189, clientX: 669, clientY: 86, …}altKey: falsebubbles: 
+truebutton: 0buttons: 0cancelBubble: falsecancelable: trueclientX: 669clientY: 86composed: truectrlKey: 
+falsecurrentTarget: nulldefaultPrevented: falsedetail: 1eventPhase: 0fromElement: nullisTrusted: 
+truelayerX: 374layerY: 61metaKey: falsemovementX: 0movementY: 0offsetX: 346offsetY: 14pageX: 669pageY: 86path: 
+(6) [h1#header.header, section.container, body, html, document, Window]relatedTarget: nullreturnValue: 
+truescreenX: 669screenY: 189shiftKey: falsesourceCapabilities: InputDeviceCapabilities
+ {firesTouchEvents: false}srcElement: h1#header.headertarget: h1#header.headertimeStamp: 8636.68500003405toElement:
+ h1#header.headertype: "mouseup"view: 
+Window {window: Window, self: Window, document: document, name: "", location: Location, …}which: 1x: 669y: 86__proto__: MouseEvent */
+
+
+
+
+
+/*   ******Mouse Enter***when the mouse will appear on the "todo app' then the event will take place***
+
+const headElement = document.querySelector("#header");
+headElement.addEventListener('mouseenter', ()=> {
+    console.log(event);
+})
+
+output:
+MouseEvent {isTrusted: true, screenX: 633, screenY: 201, clientX: 633, clientY: 98, …}altKey: falsebubbles: 
+falsebutton: 0buttons: 0cancelBubble: falsecancelable: falseclientX: 633clientY: 98composed: truectrlKey:
+ falsecurrentTarget: nulldefaultPrevented: falsedetail: 0eventPhase: 0fromElement: section.containerisTrusted: 
+ truelayerX: 338layerY: 73metaKey: falsemovementX: 0movementY: 0offsetX: 310offsetY: 26pageX: 633pageY: 98path: 
+ (6) [h1#header.header, section.container, body, html, document, Window]relatedTarget: section.containerreturnValue: 
+ truescreenX: 633screenY: 201shiftKey: falsesourceCapabilities: InputDeviceCapabilities {firesTouchEvents: false}srcElement: 
+ h1#header.headertarget: h1#header.headertimeStamp: 2730.4750001057982toElement: h1#header.headertype: "mouseenter"view: 
+Window {window: Window, self: Window, document: document, name: "", location: Location, …}which: 0x: 633y: 98__proto__: MouseEvent */
+
+
+
+
+
+/*     ******Mouse leave***when the mouse will leave from the "todo app' after apearing then the event will take place***
+const headElement = document.querySelector("#header");
+headElement.addEventListener('mouseleave', ()=> {
+    console.log(event);
+})
+
+output:
+MouseEvent {isTrusted: true, screenX: 658, screenY: 204, clientX: 658, clientY: 101, …}altKey: falsebubbles: falsebutton: 0buttons: 
+0cancelBubble: falsecancelable: falseclientX: 658clientY: 101composed: truectrlKey: falsecurrentTarget: nulldefaultPrevented: falsedetail:
+ 0eventPhase: 0fromElement: h1#header.headerisTrusted: truelayerX: 363layerY: 76metaKey: falsemovementX: 0movementY: 0offsetX: 335offsetY: 
+ 29pageX: 658pageY: 101path: (6) [h1#header.header, section.container, body, html, document, Window]relatedTarget: 
+ section.containerreturnValue: truescreenX: 658screenY: 204shiftKey: falsesourceCapabilities: InputDeviceCapabilities 
+ {firesTouchEvents: false}srcElement: h1#header.headertarget: h1#header.headertimeStamp: 7898.419999983162toElement: section.containertype: 
+ "mouseleave"view: Window {window: Window, self: Window, document: document, name: "", location: Location, …}which: 0x: 
+ 658y: 101__proto__: MouseEvent    
+ Like this "mouse over,  mouse out, mouse move*/
+
+
+
+
+/*  Difference between mouse over,leave and mouse enter,out.
+mouse over fire event on the parent element as well as its child element but mouse enter fire event only on parent element
+
+//  *****Some other important event***** Let's take the input area of todo  app*****
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
