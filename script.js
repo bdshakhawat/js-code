@@ -468,40 +468,10 @@ const formElement = document.querySelector('input [type="text"]');
 
 formElement.addEventListener("submit" , (event) => {
     event.preventDefault();
-    console.log(event);
+    console.log(event.target.value);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//  output: submit event then give the targeted elements value.
+// ***********Finally follow the w3schools  javascript DOM element tutorial.***************HTML DOM list********
 
 
 
